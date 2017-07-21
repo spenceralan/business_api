@@ -1,6 +1,12 @@
 require 'faker'
 
 Business.destroy_all
+User.destroy_all
+
+User.create!(
+  token: 'test_token'
+)
+
 
 250.times do
   Business.create!(
