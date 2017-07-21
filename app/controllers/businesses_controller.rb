@@ -5,7 +5,7 @@ class BusinessesController < ApplicationController
   end
 
   def show
-    @business = Business.find(params[:id])
+    @business = Business.find(params.fetch(:id))
     json_response(@business)
   end
 
@@ -15,8 +15,8 @@ class BusinessesController < ApplicationController
   end
 
   def update
-    @business = Business.find(params[:id])
-    if @Business.update!(business_params)
+    @business = Business.find(params.fetch(:id))
+    if @business.update!(business_params)
       render status: 200, json: {
         message: "#{@business.name} has successfully been updated."
       }
@@ -24,8 +24,8 @@ class BusinessesController < ApplicationController
   end
 
   def destroy
-    @business = Business.find(params[:id])
-    if @Business.destroy
+    @business = Business.find(params.fetch(:id))
+    if @business.destroy
       render status: 200, json: {
         message: "#{@business.name} has successfully been destroyed."
       }
