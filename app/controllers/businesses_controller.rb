@@ -1,4 +1,6 @@
 class BusinessesController < ApplicationController
+  before_action :authenticate
+
   def index
     @businesses = Business.all
     json_response(@businesses)
