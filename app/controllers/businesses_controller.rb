@@ -17,6 +17,9 @@ class BusinessesController < ApplicationController
   end
 
   def search
+    query = BusinessQuery.new(business_params)
+    @businesses = query.results
+    json_response(@businesses)
   end
 
   def create
