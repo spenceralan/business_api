@@ -11,6 +11,14 @@ class BusinessesController < ApplicationController
     json_response(@business)
   end
 
+  def random
+    @business = Business.order("random()").first
+    json_response(@business)
+  end
+
+  def search
+  end
+
   def create
     @business = Business.create!(business_params)
     json_response(@business, :created)
