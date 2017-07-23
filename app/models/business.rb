@@ -1,5 +1,13 @@
 class Business < ApplicationRecord
-  
+  validates(
+    :name,
+    :phone,
+    :address1,
+    :city,
+    :state,
+    :zip,
+    presence: true
+  )
 
   scope :by_name, -> (name) { where("name ilike ?", "%#{name}%") }
   scope :by_phone, -> (phone) { where("phone ilike ?", "%#{phone}%") }
@@ -13,6 +21,5 @@ class Business < ApplicationRecord
   scope :by_city, -> (city) { where("city ilike ?", "%#{city}%") }
   scope :by_state, -> (state) { where("state ilike ?", "%#{state}%") }
   scope :by_zip, -> (zip) { where("zip ilike ?", "%#{zip}%") }
-
 
 end
