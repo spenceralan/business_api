@@ -1,7 +1,5 @@
 require 'rails_helper'
 
-UUID = /^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/
-
 describe "authentication for random requests", :type => :request do
   let!(:user) {FactoryGirl.create(:user)}
 
