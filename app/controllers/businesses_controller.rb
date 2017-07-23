@@ -23,15 +23,13 @@ class BusinessesController < ApplicationController
   end
 
   def create
-    params = business_params.to_hash.symbolize_keys.except(:token)
-    @business = Business.create!(params)
+    @business = Business.create!(business_params)
     json_response(@business, :created)
   end
 
   def update
     @business = Business.find(params.fetch(:id))
-    params = business_params.to_hash.symbolize_keys.except(:token)
-    if @business.update!(params)
+    if @business.update!(business_params)
       render status: 200, json: {
         message: "#{@business.name} has successfully been updated."
       }
@@ -63,7 +61,6 @@ class BusinessesController < ApplicationController
       :city,
       :state,
       :zip,
-      :token,
     )
   end
 end
