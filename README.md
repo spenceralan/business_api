@@ -49,14 +49,50 @@ Once you have the server running you can start sending it API requests! I would 
 
 NOTE: Because the API is protected with authentication, your unique token will need to be present as a parameter for a sucessful API request.
 
-Retrieve all the businesses available in the database
+#### Retrieve all the businesses available in the database:
+In Postman, use a GET request.
 ```
 http://localhost:3000/businesses/?token=YOUR-TOKEN-HERE
 ```
 
-Retrieve a specific business in the databaste
+#### Retrieve a specific business in the databaste:
+In Postman, use a GET request.
 ```
 http://localhost:3000/businesses/BUSINESS-ID-HERE?token=YOUR-TOKEN-HERE
+```
+
+#### Retrieve a random business in the databaste:
+In Postman, use a GET request.
+```
+http://localhost:3000/businesses/random?token=YOUR-TOKEN-HERE
+```
+
+#### Search for a business in the databaste:
+In Postman, use a GET request and update the parameters for the item you are searching for.
+```
+http://localhost:3000/businesses/search?token=YOUR-TOKEN-HERE&name=block
+```
+If you do not supply any parameters to the search, it will return all results in the database. The list below is all of the parameters you can search by.
+
+* name
+* phone
+* email
+* twitter
+* facebook
+* website
+* owner
+* address1
+* address2
+* city
+* state
+* zip
+
+The search results will get narrower as you supply more paramters and you can supply as many parameters as you like. If you supply a parameter that is not in the above list the parameter will be ignored.
+
+#### Add a business to the databaste:
+In Postman, use a POST request.
+```
+http://localhost:3000/businesses/?token=YOUR-TOKEN-HERE
 ```
 
 
