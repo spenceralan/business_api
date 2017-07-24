@@ -52,25 +52,25 @@ NOTE: Because the API is protected with authentication, your unique token will n
 #### Retrieve all the businesses available in the database:
 In Postman, use a GET request.
 ```
-http://localhost:3000/businesses/?token=YOUR-TOKEN-HERE
+http://localhost:3000/businesses/?token=test_token
 ```
 
 #### Retrieve a specific business in the databaste:
 In Postman, use a GET request.
 ```
-http://localhost:3000/businesses/BUSINESS-ID-HERE?token=YOUR-TOKEN-HERE
+http://localhost:3000/businesses/BUSINESS-ID-HERE?token=test_token
 ```
 
 #### Retrieve a random business in the databaste:
 In Postman, use a GET request.
 ```
-http://localhost:3000/businesses/random?token=YOUR-TOKEN-HERE
+http://localhost:3000/businesses/random?token=test_token
 ```
 
 #### Search for a business in the databaste:
 In Postman, use a GET request and update the parameters for the item you are searching for.
 ```
-http://localhost:3000/businesses/search?token=YOUR-TOKEN-HERE&name=block
+http://localhost:3000/businesses/search?token=test_token&name=block
 ```
 If you do not supply any parameters to the search, it will return all results in the database. The list below is all of the parameters you can search by.
 
@@ -92,9 +92,31 @@ The search results will get narrower as you supply more paramters and you can su
 #### Add a business to the databaste:
 In Postman, use a POST request.
 ```
-http://localhost:3000/businesses/?token=YOUR-TOKEN-HERE
+http://localhost:3000/businesses/?token=test_token&name=Test Business&phone=555.555.5055&address1=12345 Test Lane Street&city=Testville&state=CA&zip=12345
 ```
+The following is a list of required parameters when adding a business to the database. You may supply more parameters but if any of the below are missing you will get a validation error. If you supply parameters that are not attributes of a business they will be discarded. If your addition is sucessful, the returned value will be the business you just created.
 
+* name
+* phone
+* address1
+* city
+* state
+* zip
+
+#### Update a business in the databaste:
+In Postman, use a PUT request.
+```
+http://localhost:3000/businesses/BUSINESS-ID-HERE?token=test_token&name=New Fancy Business Name
+```
+You can update any parameter of a business. List the parameter you would like to change and leave the rest blank. Any parameters not included will not be altered.
+
+
+#### Delete a random business in the databaste:
+In Postman, use a DELETE request.
+```
+http://localhost:3000/businesses/BUSINESS-ID-HERE?token=test_token
+```
+You can delete any business from the database such as when a business no longer exists. You do not need to supply any parameters for this request but the ID of the business will need to be present in the URL string.
 
 ## Built With
 
